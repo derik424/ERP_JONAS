@@ -1,0 +1,79 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeNamePlural: 'Mitarbeiter',
+  typeName: 'Mitarbeiter',
+  title.value: 'MitarbeiterNr',
+  description.value: 'Nachname'
+}
+annotate view ZJL_C_MITARBEITER with {
+
+@UI.facet:
+  [
+    { position: 10, targetQualifier: 'Mitarbeiterdaten', label: 'Mitarbeiterdaten', type: #FIELDGROUP_REFERENCE },
+    { position: 20, targetQualifier: 'AdministrativeDetails', label: 'Administrative Daten', type: #FIELDGROUP_REFERENCE },
+        { position: 30, targetElement: '_URLAUBANTRAG', label: 'Urlaubsanträge', type: #LINEITEM_REFERENCE },
+        { position: 40, targetElement: '_URLAUBSAN', label: 'Urlaubsanspruch', type: #LINEITEM_REFERENCE }
+         
+   ]
+
+
+  /* --- Felder für Mitarbeiter Details --- */
+
+  @UI.lineItem: [{ position: 10, label: 'MitarbeiterNr' }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'MItarbeiterdaten' }]
+  MitarbeiterNr;
+
+
+  @UI.lineItem: [{ position: 20, label: 'Vorname' }]
+    @UI.fieldGroup: [{ position: 20, qualifier: 'Mitarbeiterdaten' }]
+     @UI.selectionField: [{ position: 20 }]
+     @EndUserText.label: 'Vorname'
+  Vorname;
+
+ 
+  @UI.lineItem: [{ position: 30, label: 'Nachname' }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'Mitarbeiterdaten' }]
+   @UI.selectionField: [{ position: 30 }]
+   @EndUserText.label: 'Nachname'
+  Nachname;
+
+  @UI.identification: [{ position: 40, label: 'Eintrittsdatum' }]
+  @UI.lineItem: [{ position: 40, label: 'Eintrittsdatum' }]
+  @UI.selectionField: [{ position: 20 }]  /* Filterbar */
+  @UI.fieldGroup: [{ position: 40, qualifier: 'Mitarbeiterdaten' }]
+  @EndUserText.label: 'Eintrittsdatum'
+  Eintrittsdatum;
+
+  /* --- Administrative Daten (Zweiter Bereich) --- */
+  @UI.facet: [ { 
+     id: 'Administrative_Daten', 
+     label: 'Administrative Daten', 
+     position: 20, 
+     type: #COLLECTION 
+  } ]
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdministrativeDetails' }]
+  @UI.identification: [{ position: 50, label: 'Erstellt am' }]
+  ErstelltAm;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdministrativeDetails' }]
+  @UI.identification: [{ position: 60, label: 'Erstellt von' }]
+  ErstelltVon;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdministrativeDetails' }]
+  @UI.identification: [{ position: 70, label: 'Geändert am' }]
+  GeaendertAm;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdministrativeDetails' }]
+  @UI.identification: [{ position: 80, label: 'Geändert von' }]
+  GeaendertVon;
+  
+    @UI.lineItem: [{ position: 50, label: 'Urlaubsanträge', type: #FOR_ACTION, dataAction: '_URLAUBANTRAG' }]
+   _URLAUBANTRAG;
+   
+   @UI.lineItem: [{ position: 60, label: 'Urlaubsanspruch', type: #FOR_ACTION, dataAction: '_URLAUBSAN' }]
+   _URLAUBSAN;
+
+}

@@ -1,0 +1,6 @@
+@EndUserText.label: 'ServiceDefinition Urlaubsantrag'
+define service ZJL_UI_Urlaubantrag {
+  expose ZJL_C_MITARBEITER  as MITARBEITER;
+  expose ZJL_C_URLAUBANTRAG as URLAUBANTRAG;
+  expose ZJL_C_URLAUBSAN    as URLAUBSAN;
+}

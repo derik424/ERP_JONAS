@@ -1,0 +1,6 @@
+@EndUserText.label: 'UI Mitarbeiter'
+define service ZLJ_UI_MITARBEITER {
+  expose ZJL_C_MITARBEITER;
+  expose ZJL_C_URLAUBANTRAG as URLAUBANTRAG;
+  expose ZJL_C_URLAUBSAN    as URLAUBSAN;
+}

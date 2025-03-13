@@ -1,0 +1,10 @@
+
+@Metadata.layer: #CORE
+annotate view ZJL_C_MITARBEITER with {
+
+   @UI.lineItem: [{ position: 50, label: 'Urlaubsanträge', type: #FOR_ACTION, dataAction: '_URLAUBANTRAG' }]
+   _URLAUBANTRAG;
+
+   @UI.lineItem: [{ position: 60, label: 'Urlaubssaldo', type: #FOR_ACTION, dataAction: '_URLAUBSAN' }]
+   _URLAUBSAN;
+}

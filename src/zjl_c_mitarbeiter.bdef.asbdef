@@ -1,0 +1,32 @@
+projection;
+strict ( 2 );
+
+define behavior for ZJL_C_MITARBEITER alias MITARBEITER
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _URLAUBSAN;
+  use association _URLAUBANTRAG { create; }
+}
+
+define behavior for ZJL_C_URLAUBANTRAG alias URLAUBSANTRAG
+{
+  use update;
+  use delete;
+
+  use action approve;
+  use action reject;
+
+
+  use association _Antragsteller;
+}
+
+define behavior for ZJL_C_URLAUBSAN alias URLAUBSAN
+{
+  use update;
+  use delete;
+
+  use association _MITARBEITER;
+}

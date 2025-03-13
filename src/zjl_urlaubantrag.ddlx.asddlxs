@@ -1,0 +1,97 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+  typeNamePlural: 'Urlaubsanträge',
+  typeName: 'Urlaubsantrag',
+  title.value: 'Id',
+  description.value: 'Kommentar'
+}
+annotate view ZJL_C_URLAUBANTRAG with
+{
+  
+  
+    
+  /* Facets */
+  @UI.facet:
+  [
+    { position: 10, targetQualifier: 'AntragsDetails', label: 'Antrags Details', type: #FIELDGROUP_REFERENCE },
+    { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
+  ]
+ 
+ 
+  
+ /* Actions */
+  @UI.lineItem:
+  [
+    { position: 80, dataAction: 'approve', label: 'Genehmigen', type: #FOR_ACTION },
+    { position: 90, dataAction: 'reject', label: 'Ablehnen', type: #FOR_ACTION }, 
+    { position: 10, dataAction: 'ShowEndDatumVorStartdatum', label: 'Show Test Message', type: #FOR_ACTION }
+  ]
+  @UI.identification:
+  [
+    { position: 80, dataAction: 'approve', label: 'Genehmigen', type: #FOR_ACTION },
+    { position: 90, dataAction: 'reject', label: 'Ablehnen', type: #FOR_ACTION }
+  ]
+
+ 
+  /* Fields */
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Id'
+  Id;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Erstellt am'
+  ErstelltAm;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Erstellt von'
+  ErstelltVon;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Geändert am'
+  GeaendertAm;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Geändert von'
+  GeaendertVon;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AntragsDetails' }]
+   @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Antragsteller'
+  Antragsteller;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AntragsDetails' }]
+  @EndUserText.label: 'Genehmigender'
+  Genehmigender;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AntragsDetails' }]
+  @EndUserText.label: 'Startdatum'
+  Startdatum;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AntragsDetails' }]
+  @EndUserText.label: 'Enddatum'
+  Enddatum;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AntragsDetails' }]
+  @EndUserText.label: 'Urlaubstage'
+  Urlaubstage;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.fieldGroup: [{ position: 60, qualifier: 'AntragsDetails' }]
+  @EndUserText.label: 'Kommentar'
+  Kommentar;
+
+  @UI.lineItem: [{ position: 70 }]
+  @UI.fieldGroup: [{ position: 70, qualifier: 'AntragsDetails' }]
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'Status'
+  Status;
+ 
+
+
+   
+}

@@ -1,0 +1,115 @@
+managed implementation in class zbp_jl_r_mitarbeiter unique;
+strict ( 2 );
+
+define behavior for ZJL_R_MITARBEITER alias Mitarbeiter
+persistent table zjl_mitarbeiter
+lock master
+authorization master ( instance )
+{
+
+  create;
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) ID;
+
+  mapping for zjl_mitarbeiter corresponding
+    {
+      ID             = id;
+      MitarbeiterNr  = mitarbeiter_nr;
+      Vorname        = vorname;
+      Nachname       = nachname;
+      Eintrittsdatum = eintrittsdatum;
+      ErstelltAm     = erstellt_am;
+      ErstelltVon    = erstellt_von;
+      GeaendertAm    = geaendert_am;
+      GeaendertVon   = geaendert_von;
+    }
+
+  association _URLAUBSAN;
+  association _URLAUBANTRAG { create; }
+
+}
+
+
+
+define behavior for ZJL_R_URLAUBANTRAG alias Urlaubantrag
+persistent table zjl_urlaubantrag
+lock dependent by _Antragsteller
+authorization dependent by _Antragsteller
+{
+
+
+    update;
+  delete;
+
+
+determination DetermineSTatus on modify { create; }
+
+
+
+  field ( readonly, numbering : managed ) Id;
+  field (readonly) Antragsteller;
+  field (mandatory) Genehmigender;
+  field (mandatory) Startdatum;
+  field (mandatory) Enddatum;
+  field (readonly) Urlaubstage;
+
+
+
+  mapping for zjl_urlaubantrag corresponding
+    {
+      Id            = id;
+      Antragsteller = antragsteller;
+      Genehmigender = genehmigender;
+      Startdatum    = startdatum;
+      Enddatum      = enddatum;
+      urlaubstage   = urlaubstage;
+      Kommentar     = kommentar;
+      Status        = status;
+      ErstelltAm    = erstellt_am;
+      ErstelltVon   = erstellt_von;
+      GeaendertAm   = geaendert_am;
+      GeaendertVon  = geaendert_von;
+    }
+
+  association _Antragsteller;
+
+  // Action für genehmigen, ablehnen. In the making
+  action ( features : instance ) approve result [1] $self;
+  action ( features : instance ) reject result [1] $self;
+
+}
+
+
+
+define behavior for ZJL_R_URLAUBSAN alias URLAUBSAN
+persistent table zjl_urlaubsan
+lock dependent by _MITARBEITER
+authorization dependent by _MITARBEITER
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) Id;
+  field (readonly) Mitarbeiter;
+
+
+  mapping for zjl_urlaubsan corresponding
+    {
+      Id           = id;
+      Mitarbeiter  = mitarbeiter;
+      Jahr         = jahr;
+      Urlaubstage  = urlaubstage;
+      ErstelltAm   = erstellt_am;
+      ErstelltVon  = erstellt_von;
+      GeaendertAm  = geaendert_am;
+      GeaendertVon = geaendert_von;
+    }
+
+
+  association _MITARBEITER;
+
+
+}

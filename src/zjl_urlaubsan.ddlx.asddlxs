@@ -1,0 +1,57 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: {
+typeName: 'Urlaubsanspruch',
+typeNamePlural: 'Urlaubsansprüche',
+title.value: 'Id',
+description.value: 'Mitarbeiter'
+}
+annotate entity ZJL_C_URLAUBSAN
+    with 
+{
+    @UI.facet: [
+{ position: 10, label: 'Urlaubsanspruch', type: #FIELDGROUP_REFERENCE }
+]
+
+@UI.lineItem: [
+{ position: 10, label: 'Mitarbeiter' }
+]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'Urlaubsanspruch' }]
+  @EndUserText.label: 'Mitarabeiter'
+Mitarbeiter;
+
+@UI.lineItem: [
+{ position: 20, label: 'Jahr' }
+]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'Urlaubsanspruch' }]
+  @EndUserText.label: 'Jahr'
+Jahr;
+
+@UI.lineItem: [
+{ position: 30, label: 'Urlaubstage' }
+]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'Urlaubsanspruch' }]
+  @EndUserText.label: 'Urlaubstage'
+Urlaubstage;
+
+@UI.fieldGroup: [{ position: 10, qualifier: 'Urlaubsanspruch' }]
+  @EndUserText.label: 'Verbrauchte Urlaubstage'
+  @UI.lineItem: [
+{ position: 40, label: 'Verbrauchte Urlaubstage' }
+]
+urlaubstage_verbraucht; 
+
+@UI.fieldGroup: [{ position: 10, qualifier: 'Urlaubsanspruch' }]
+  @EndUserText.label: 'Verfügbare Urlaubstage'
+  @UI.lineItem: [
+{ position: 50, label: 'Verfügbare Urlaubstage' }
+]
+verfuegbare_urlaubstage;
+
+@UI.fieldGroup: [{ position: 10, qualifier: 'Urlaubsanspruch' }]
+  @EndUserText.label: 'Geplante Urlaubstage'
+  @UI.lineItem: [
+{ position: 60, label: 'Geplante Urlaubstage' }
+]
+geplante_urlaubstage;
+}
